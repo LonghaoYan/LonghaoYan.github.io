@@ -30,7 +30,7 @@
   <link rel="alternate" hreflang="en" href="https://longhaoyan.github.io/?lang=en">
   <link rel="alternate" hreflang="x-default" href="https://longhaoyan.github.io/">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css?v=47">
+  <link rel="stylesheet" href="assets/css/styles.css?v=52">
   <title>Longhao Yan | 闫龙皞</title>
   <script type="application/ld+json">
     {
@@ -65,13 +65,14 @@
         <span class="brand-mark" aria-hidden="true">LY</span>
         <span>Longhao Yan</span>
       </a>
-      <span class="current-section-label" data-current-section aria-hidden="true">首页</span>
+      <button class="current-section-label" type="button" data-current-section aria-expanded="false" aria-controls="primary-nav" aria-label="打开导航菜单" data-i18n-aria-label="navOpen">首页</button>
       <nav id="primary-nav" aria-label="主导航" data-i18n-aria-label="primaryNav">
         <a href="#about" data-i18n="navAbout">简介</a>
         <a href="#research" data-i18n="navResearch">研究</a>
         <a href="#systems" data-i18n="navSystems">芯片</a>
         <a href="#publications" data-i18n="navPublications">成果</a>
         <a href="#experience" data-i18n="navExperience">经历</a>
+        <a href="#more" data-i18n="navMore">更多</a>
         <a href="#contact" data-i18n="navContact">联系</a>
       </nav>
       <div class="header-actions">
@@ -459,6 +460,271 @@
             <i aria-hidden="true"></i>
           </button>
         </div>
+
+        <section class="publication-archive" id="all-publications" aria-labelledby="publication-archive-title">
+          <div class="archive-heading">
+            <div>
+              <p class="section-kicker">COMPLETE PUBLICATION RECORD</p>
+              <h3 id="publication-archive-title" data-i18n="publicationArchiveTitle">全部论文</h3>
+            </div>
+            <p data-i18n="publicationArchiveIntro">完整收录期刊与会议论文，按年份倒序排列。</p>
+          </div>
+
+          <div class="archive-controls">
+            <label class="archive-search">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+              <input type="search" data-publication-search aria-label="搜索论文题目、作者、期刊或年份" data-i18n-aria-label="publicationArchiveSearchLabel" placeholder="搜索题目、作者、期刊或年份">
+            </label>
+            <div class="archive-filters" role="group" aria-label="完整论文筛选" data-i18n-aria-label="publicationArchiveFilterLabel">
+              <button class="is-active" type="button" data-archive-filter="all" aria-pressed="true"><span data-i18n="filterAll">全部</span><small>27</small></button>
+              <button type="button" data-archive-filter="first" aria-pressed="false"><span data-i18n="roleFirst">第一作者</span><small>15</small></button>
+              <button type="button" data-archive-filter="corresponding" aria-pressed="false"><span data-i18n="roleCorresponding">通讯作者</span><small>4</small></button>
+              <button type="button" data-archive-filter="journal" aria-pressed="false"><span data-i18n="filterJournals">期刊</span><small>12</small></button>
+              <button type="button" data-archive-filter="conference" aria-pressed="false"><span data-i18n="filterConferences">会议</span><small>15</small></button>
+            </div>
+          </div>
+          <p class="archive-results" data-publication-results aria-live="polite">显示 27 / 27 篇论文</p>
+
+          <div class="archive-list" id="publication-archive-list">
+            <section class="archive-year" data-archive-year="2026" aria-labelledby="archive-year-2026">
+              <h4 id="archive-year-2026">2026</h4>
+              <ul>
+                <li data-archive-entry data-type="journal" data-role="first">
+                  <article>
+                    <div class="archive-meta"><span>Science</span><span class="journal-impact" aria-label="Impact Factor 47.3"><small>IF</small><strong>47.3</strong></span><span class="role" data-i18n="roleFirst">第一作者</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1126/science.aee6277" target="_blank" rel="noopener">A sub-10-millisecond neural dynamical system based on phase-change memristors</a></h5>
+                    <p>Lei Cai#, Yaoyu Tao#*, Chenchen Xie#, <strong>Longhao Yan#</strong>, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="journal" data-role="">
+                  <article>
+                    <div class="archive-meta"><span>Nature Electronics</span><span class="journal-impact" aria-label="Impact Factor 40.9"><small>IF</small><strong>40.9</strong></span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1038/s41928-025-01534-8" target="_blank" rel="noopener">A first-principles hetero-integrated Fourier transform system based on memristors</a></h5>
+                    <p>Lei Cai#, Yaoyu Tao*#, Teng Zhang#, Chang Liu#, ... <strong>Longhao Yan</strong>, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="journal" data-role="">
+                  <article>
+                    <div class="archive-meta"><span>Nature Communications</span><span class="journal-impact" aria-label="Impact Factor 15.7"><small>IF</small><strong>15.7</strong></span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1038/s41467-025-68122-4" target="_blank" rel="noopener">High-concurrency tri-mode memristor-based ordinary differential equation solver</a></h5>
+                    <p>Lianfeng Yu, Teng Zhang, Yang Han, ... <strong>Longhao Yan</strong>, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="conference" data-role="first corresponding">
+                  <article>
+                    <div class="archive-meta"><span>IEEE European Solid-State Electronics Research Conference (ESSERC)</span><span class="archive-status" data-i18n="accepted">已接收</span><span class="role" data-i18n="roleFirst">第一作者</span><span class="role" data-i18n="roleCorresponding">通讯作者</span></div>
+                    <h5>A Hybrid Analog-Digital RRAM CIM System with 4T2R1C Charge-Domain ACIM and RL-Driven Mixed-Precision Deployment for AI Inference</h5>
+                    <p>Minghui Yin#, Jiukai Fang#, <strong>Longhao Yan#*</strong>, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="conference" data-role="first corresponding">
+                  <article>
+                    <div class="archive-meta"><span>IEEE European Solid-State Electronics Research Conference (ESSERC)</span><span class="archive-status" data-i18n="accepted">已接收</span><span class="role" data-i18n="roleFirst">第一作者</span><span class="role" data-i18n="roleCorresponding">通讯作者</span></div>
+                    <h5>An 8Mb 16-Core Wear-Resilient RRAM Compute-in-Memory Processor with Overshoot-Optimized MLC Programming and Compute-Aware Wear Leveling for Aerial Embodied Learning</h5>
+                    <p>Ruiheng Wang#, <strong>Longhao Yan#*</strong>, Daijing Shi, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="conference" data-role="corresponding">
+                  <article>
+                    <div class="archive-meta"><span>IEEE European Solid-State Electronics Research Conference (ESSERC)</span><span class="archive-status" data-i18n="accepted">已接收</span><span class="role" data-i18n="roleCorresponding">通讯作者</span></div>
+                    <h5>A 40nm 3.58 mJ/Frame PCM-Based POSIT/INT Mixed-Precision Digital/Analog CIM Chip for Edge Foveated Rendering</h5>
+                    <p>Bowen Wang#, Zelun Pan#, Zhe Zhan, <strong>Longhao Yan*</strong>, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="journal" data-role="first">
+                  <article>
+                    <div class="archive-meta"><span>Integrated Circuits and Systems</span><span class="role" data-i18n="roleFirst">第一作者</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.23919/ICS.2026.3676379" target="_blank" rel="noopener">A Scalable Charge-Domain CIM Macro With 2T1R1C Cells and Capacitor Reuse Method</a></h5>
+                    <p>Bowen Wang#, <strong>Longhao Yan#</strong>, Xiyuan Tang*, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="journal" data-role="">
+                  <article>
+                    <div class="archive-meta"><span>Advanced Science</span><span class="journal-impact" aria-label="Impact Factor 14.1"><small>IF</small><strong>14.1</strong></span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1002/advs.202521815" target="_blank" rel="noopener">In Situ Quantization with Memory-Transistor Transfer Unit Based on Electrochemical Random-Access Memory for Edge Applications</a></h5>
+                    <p>Zhen Yang, Yuxiang Yang, Baiqian Wang, ... <strong>Longhao Yan</strong>, et al.</p>
+                  </article>
+                </li>
+              </ul>
+            </section>
+
+            <section class="archive-year" data-archive-year="2025" aria-labelledby="archive-year-2025">
+              <h4 id="archive-year-2025">2025</h4>
+              <ul>
+                <li data-archive-entry data-type="conference" data-role="first">
+                  <article>
+                    <div class="archive-meta"><span>IEEE International Electron Devices Meeting (IEDM)</span><span class="role accent">Technical Highlight</span><span class="role" data-i18n="roleFirst">第一作者</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1109/IEDM50572.2025.11353856" target="_blank" rel="noopener">An 8Mb Learning-Aware RRAM Compute-in-Memory Accelerator for Embodied Self-Supervised Learning</a></h5>
+                    <p><strong>Longhao Yan#</strong>, Zhe Zhan#, Zelun Pan, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="conference" data-role="first">
+                  <article>
+                    <div class="archive-meta"><span>IEEE International Electron Devices Meeting (IEDM)</span><span class="role" data-i18n="roleFirst">第一作者</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1109/IEDM50572.2025.11353552" target="_blank" rel="noopener">Efficient Multimodal Fusion with Intelligent Predictive Programming Based on 64-Core PCM Compute-in-Memory Processor</a></h5>
+                    <p><strong>Longhao Yan#</strong>, Zitong Zheng#, Xi Li, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="conference" data-role="first">
+                  <article>
+                    <div class="archive-meta"><span>IEEE International Electron Devices Meeting (IEDM)</span><span class="role" data-i18n="roleFirst">第一作者</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1109/IEDM50572.2025.11353523" target="_blank" rel="noopener">A 40nm Mixed-Precision PCM Chip with Fused Analog/Digital Compute-in-Memory and Adaptive Drift Compensation for Embodied AI Applications</a></h5>
+                    <p>Zelun Pan#, <strong>Longhao Yan#</strong>, Xile Wang, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="journal" data-role="corresponding">
+                  <article>
+                    <div class="archive-meta"><span>Advanced Science</span><span class="journal-impact" aria-label="Impact Factor 14.1"><small>IF</small><strong>14.1</strong></span><span class="role" data-i18n="roleCorresponding">通讯作者</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1002/advs.202505678" target="_blank" rel="noopener">Memristive In-Memory Object Detection with 128 Mb C-doped PCM Chip</a></h5>
+                    <p>Chenchen Xie#, Yuqi Li#, <strong>Longhao Yan*</strong>, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="conference" data-role="first">
+                  <article>
+                    <div class="archive-meta"><span>IEEE European Solid-State Electronics Research Conference (ESSERC)</span><span class="role" data-i18n="roleFirst">第一作者</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1109/ESSERC66193.2025.11214056" target="_blank" rel="noopener">A 1308 TOPS/W Charge-Mode ReRAM CIM Macro with 4T2R2C Differential Cell and FIA-Based Analog Accumulation for AI Inference</a></h5>
+                    <p><strong>Longhao Yan#</strong>, Zelun Pan#, Zhe Zhan, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="conference" data-role="first">
+                  <article>
+                    <div class="archive-meta"><span>IEEE Electron Devices Technology &amp; Manufacturing Conference (EDTM)</span><span class="role" data-i18n="roleFirst">第一作者</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1109/EDTM61175.2025.11041605" target="_blank" rel="noopener">An Efficient Pipeline Programming Scheme Based on 40nm PCM Compute-in-Memory Chip for CNNs</a></h5>
+                    <p>Xile Wang#, <strong>Longhao Yan#</strong>, Xi Li, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="conference" data-role="first">
+                  <article>
+                    <div class="archive-meta"><span>IEEE International Conference on Integrated Circuits, Technologies and Applications (ICTA)</span><span class="role accent">Best Paper Award Finalist</span><span class="role" data-i18n="roleFirst">第一作者</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1109/ICTA68203.2025.11329816" target="_blank" rel="noopener">A 617.7 TOPS/W PCM-Based Charge-Domain CIM Macro with Capacitor Reuse Method and Scalable Local Compute Unit</a></h5>
+                    <p>Bowen Wang#, <strong>Longhao Yan#</strong>, Xiyuan Tang*, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="journal" data-role="">
+                  <article>
+                    <div class="archive-meta"><span>Advanced Intelligent Systems</span><span class="journal-impact" aria-label="Impact Factor 6.1"><small>IF</small><strong>6.1</strong></span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1002/aisy.202401068" target="_blank" rel="noopener">Energy-Efficient Online Training with In Situ Parallel Computing on Electrochemical Memory Arrays</a></h5>
+                    <p>Yingming Lu, Zhen Yang, Yaoyu Tao, ... <strong>Longhao Yan</strong>, et al.</p>
+                  </article>
+                </li>
+              </ul>
+            </section>
+
+            <section class="archive-year" data-archive-year="2024" aria-labelledby="archive-year-2024">
+              <h4 id="archive-year-2024">2024</h4>
+              <ul>
+                <li data-archive-entry data-type="conference" data-role="first">
+                  <article>
+                    <div class="archive-meta"><span>IEEE International Electron Devices Meeting (IEDM)</span><span class="role" data-i18n="roleFirst">第一作者</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1109/IEDM50854.2024.10873590" target="_blank" rel="noopener">Neural Manifold Learning Based on 40 nm Dual-Mode PCM Compute-in-Memory Chip with Hardware Adaptive Drift Compensation</a></h5>
+                    <p><strong>Longhao Yan#</strong>, Yuqi Li#, Xi Li, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="conference" data-role="">
+                  <article>
+                    <div class="archive-meta"><span>IEEE/ACM International Symposium on Microarchitecture (MICRO)</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1109/MICRO61859.2024.00122" target="_blank" rel="noopener">MeMCISA: Memristor-Enabled Memory-Centric Instruction-Set Architecture for Database Workloads</a></h5>
+                    <p>Yihang Zhu, Lei Cai, Lianfeng Yu, ... <strong>Longhao Yan</strong>, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="journal" data-role="">
+                  <article>
+                    <div class="archive-meta"><span>Advanced Functional Materials</span><span class="journal-impact" aria-label="Impact Factor 19.9"><small>IF</small><strong>19.9</strong></span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1002/adfm.202405618" target="_blank" rel="noopener">Fully Hardware Memristive Neuromorphic Computing Enabled by the Integration of Trainable Dendritic Neurons and High-Density RRAM Chip</a></h5>
+                    <p>Zhen Yang, Wenshuo Yue, Chang Liu, ... <strong>Longhao Yan</strong>, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="conference" data-role="first">
+                  <article>
+                    <div class="archive-meta"><span>IEEE Electron Devices Technology &amp; Manufacturing Conference (EDTM)</span><span class="role" data-i18n="roleFirst">第一作者</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1109/EDTM58488.2024.10512132" target="_blank" rel="noopener">On-Chip Write &amp; Verify and Endurance Enhancer Circuits towards Multi-level RRAM Array</a></h5>
+                    <p>Quan Zhang#, <strong>Longhao Yan#</strong>, Yaoyu Tao, et al.</p>
+                  </article>
+                </li>
+              </ul>
+            </section>
+
+            <section class="archive-year" data-archive-year="2023" aria-labelledby="archive-year-2023">
+              <h4 id="archive-year-2023">2023</h4>
+              <ul>
+                <li data-archive-entry data-type="journal" data-role="first">
+                  <article>
+                    <div class="archive-meta"><span>Advanced Functional Materials</span><span class="journal-impact" aria-label="Impact Factor 19.9"><small>IF</small><strong>19.9</strong></span><span class="role accent" data-i18n="coverArticle">封面文章</span><span class="role" data-i18n="roleFirst">第一作者</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1002/adfm.202300458" target="_blank" rel="noopener">Neural Architecture Search with In-Memory Multiply-Accumulate and In-Memory Rank Based on Coating Layer Optimized C-doped Phase Change Memory</a></h5>
+                    <p><strong>Longhao Yan</strong>, Qingyu Wu, Xi Li, et al.</p>
+                  </article>
+                </li>
+              </ul>
+            </section>
+
+            <section class="archive-year" data-archive-year="2022" aria-labelledby="archive-year-2022">
+              <h4 id="archive-year-2022">2022</h4>
+              <ul>
+                <li data-archive-entry data-type="journal" data-role="">
+                  <article>
+                    <div class="archive-meta"><span>Advanced Materials</span><span class="journal-impact" aria-label="Impact Factor 26.8"><small>IF</small><strong>26.8</strong></span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1002/adma.202107811" target="_blank" rel="noopener">In-Memory Realization of Eligibility Traces Based on Conductance Drift of Phase Change Memory for Energy-Efficient Reinforcement Learning</a></h5>
+                    <p>Yingming Lu, Xi Li, Bonan Yan, <strong>Longhao Yan</strong>, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="conference" data-role="first">
+                  <article>
+                    <div class="archive-meta"><span>IEEE Electron Devices Technology &amp; Manufacturing Conference (EDTM)</span><span class="role" data-i18n="roleFirst">第一作者</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1109/EDTM53872.2022.9797926" target="_blank" rel="noopener">Graph Neural Network Based on RRAM Array</a></h5>
+                    <p><strong>Longhao Yan</strong>, Yihang Zhu, Zhaokun Jing, et al.</p>
+                  </article>
+                </li>
+              </ul>
+            </section>
+
+            <section class="archive-year" data-archive-year="2021" aria-labelledby="archive-year-2021">
+              <h4 id="archive-year-2021">2021</h4>
+              <ul>
+                <li data-archive-entry data-type="conference" data-role="first">
+                  <article>
+                    <div class="archive-meta"><span>IEEE International Electron Devices Meeting (IEDM)</span><span class="role accent">Top Ranked Student Paper</span><span class="role" data-i18n="roleFirst">第一作者</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1109/IEDM19574.2021.9720555" target="_blank" rel="noopener">Uncertainty Quantification Based on Multilevel Conductance and Stochasticity of Heater Size Dependent C-doped PCM Chip</a></h5>
+                    <p><strong>Longhao Yan</strong>, Xi Li, Yihang Zhu, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="journal" data-role="">
+                  <article>
+                    <div class="archive-meta"><span>Science China Information Sciences</span><span class="journal-impact" aria-label="Impact Factor 7.6"><small>IF</small><strong>7.6</strong></span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1007/s11432-020-3245-7" target="_blank" rel="noopener">NAS4RRAM: Neural Network Architecture Search for Inference on RRAM-Based Accelerators</a></h5>
+                    <p>Zhihang Yuan, Jingze Liu, Xingchen Li, <strong>Longhao Yan</strong>, et al.</p>
+                  </article>
+                </li>
+              </ul>
+            </section>
+
+            <section class="archive-year" data-archive-year="2020" aria-labelledby="archive-year-2020">
+              <h4 id="archive-year-2020">2020</h4>
+              <ul>
+                <li data-archive-entry data-type="conference" data-role="">
+                  <article>
+                    <div class="archive-meta"><span>IEEE International Electron Devices Meeting (IEDM)</span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1109/IEDM13553.2020.9371910" target="_blank" rel="noopener">Accelerated Local Training of CNNs by Optimized Direct Feedback Alignment Based on Stochasticity of 4 Mb C-doped PCM Chip in 40 nm Node</a></h5>
+                    <p>Yingming Lu, Xi Li, <strong>Longhao Yan</strong>, et al.</p>
+                  </article>
+                </li>
+                <li data-archive-entry data-type="journal" data-role="">
+                  <article>
+                    <div class="archive-meta"><span>IEEE Electron Device Letters</span><span class="journal-impact" aria-label="Impact Factor 4.5"><small>IF</small><strong>4.5</strong></span></div>
+                    <h5><a class="publication-title-link" href="https://doi.org/10.1109/LED.2020.3025791" target="_blank" rel="noopener">Physically Transient Optic-Neural Synapse for Secure In-Sensor Computing</a></h5>
+                    <p>Bingjie Dang, Lan Ma, <strong>Longhao Yan</strong>, et al.</p>
+                  </article>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <p class="archive-empty" data-publication-empty data-i18n="publicationArchiveEmpty" hidden>没有符合当前条件的论文。</p>
+          <div class="content-more archive-more-wrap">
+            <button class="content-more-button archive-more-button" type="button" data-publication-archive-more aria-expanded="false" aria-controls="publication-archive-list">
+              <span data-publication-archive-more-label>查看全部 27 篇论文</span>
+              <i aria-hidden="true"></i>
+            </button>
+          </div>
+        </section>
       </div>
     </section>
 
@@ -487,38 +753,47 @@
       </div>
     </section>
 
-    <section class="section" id="projects">
-      <div class="container two-column">
-        <div>
-          <p class="section-kicker">PROJECTS</p>
-          <h2 data-i18n="projectsTitle">科研项目</h2>
-          <div class="compact-list">
-            <article>
-              <span data-i18n="project1Meta">2025 — 2027 · 主持</span>
-              <h3 data-i18n="project1Title">国家自然科学基金青年基金 C 类</h3>
-              <p data-i18n="project1Text">基于电荷域计算的忆阻存算一体芯片研究</p>
-            </article>
-            <article>
-              <span data-i18n="project2Meta">2026 — 2029 · 课题负责人</span>
-              <h3 data-i18n="project2Title">国家自然科学基金联合基金重点项目</h3>
-              <p data-i18n="project2Text">面向脑机接口神经康复的忆阻器感存算一体芯片研究</p>
-            </article>
-            <article>
-              <span data-i18n="project3Meta">2024 — 至今 · 主持</span>
-              <h3 data-i18n="project3Title">中国博士后科学基金面上项目</h3>
-              <p data-i18n="project3Text">面向浮点数计算的数字型忆阻存算一体芯片研究</p>
-            </article>
+    <section class="section more-section" id="more">
+      <div class="container">
+        <div class="section-heading more-heading">
+          <div>
+            <p class="section-kicker">MORE</p>
+            <h2 data-i18n="moreTitle">更多学术信息</h2>
           </div>
+          <p data-i18n="moreIntro">科研项目、学术认可与完整论文档案</p>
         </div>
-        <div>
-          <p class="section-kicker">RECOGNITION</p>
-          <h2 data-i18n="recognitionTitle">学术认可</h2>
-          <ul class="honor-list">
-            <li><strong class="honor-title">Technical Highlight</strong><span class="honor-source">IEEE International Electron Devices Meeting (IEDM) 2025</span></li>
-            <li><strong class="honor-title">Top Ranked Student Paper</strong><span class="honor-source">IEEE International Electron Devices Meeting (IEDM) 2021</span></li>
-            <li><strong class="honor-title">Best Paper Award Finalist</strong><span class="honor-source">IEEE International Conference on Integrated Circuits, Technologies and Applications (ICTA) 2025</span></li>
-            <li><strong class="honor-title">Cover Article</strong><span class="honor-source">Advanced Functional Materials 2023</span></li>
-          </ul>
+        <div class="two-column more-grid">
+          <div class="more-panel">
+            <p class="section-kicker">PROJECTS</p>
+            <h2 data-i18n="projectsTitle">科研项目</h2>
+            <div class="compact-list">
+              <article>
+                <span data-i18n="project1Meta">2025 — 2027 · 主持</span>
+                <h3 data-i18n="project1Title">国家自然科学基金青年基金 C 类</h3>
+                <p data-i18n="project1Text">基于电荷域计算的忆阻存算一体芯片研究</p>
+              </article>
+              <article>
+                <span data-i18n="project2Meta">2026 — 2029 · 课题负责人</span>
+                <h3 data-i18n="project2Title">国家自然科学基金联合基金重点项目</h3>
+                <p data-i18n="project2Text">面向脑机接口神经康复的忆阻器感存算一体芯片研究</p>
+              </article>
+              <article>
+                <span data-i18n="project3Meta">2024 — 至今 · 主持</span>
+                <h3 data-i18n="project3Title">中国博士后科学基金面上项目</h3>
+                <p data-i18n="project3Text">面向浮点数计算的数字型忆阻存算一体芯片研究</p>
+              </article>
+            </div>
+          </div>
+          <div class="more-panel">
+            <p class="section-kicker">RECOGNITION</p>
+            <h2 data-i18n="recognitionTitle">学术认可</h2>
+            <ul class="honor-list">
+              <li><strong class="honor-title">Technical Highlight</strong><span class="honor-source">IEEE International Electron Devices Meeting (IEDM) 2025</span></li>
+              <li><strong class="honor-title">Top Ranked Student Paper</strong><span class="honor-source">IEEE International Electron Devices Meeting (IEDM) 2021</span></li>
+              <li><strong class="honor-title">Best Paper Award Finalist</strong><span class="honor-source">IEEE International Conference on Integrated Circuits, Technologies and Applications (ICTA) 2025</span></li>
+              <li><strong class="honor-title">Cover Article</strong><span class="honor-source">Advanced Functional Materials 2023</span></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -543,7 +818,7 @@
       <p data-i18n="footerTagline">Built for research, collaboration and open exchange.</p>
     </div>
   </footer>
-  <script src="assets/js/site.js?v=18" defer></script>
-  <script src="assets/js/publications.js?v=30" defer></script>
+  <script src="assets/js/site.js?v=22" defer></script>
+  <script src="assets/js/publications.js?v=33" defer></script>
 </body>
 </html>

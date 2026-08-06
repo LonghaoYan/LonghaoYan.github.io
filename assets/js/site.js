@@ -11,6 +11,7 @@ const translations = {
     navSystems: "芯片",
     navPublications: "成果",
     navExperience: "经历",
+    navMore: "更多",
     navContact: "联系",
     heroEyebrow: "新型存储 · 存算一体 · 智能计算",
     heroNamePrimary: "闫龙皞",
@@ -82,11 +83,22 @@ const translations = {
     publicationsShowAll: "查看全部 12 篇论文",
     publicationsShowLess: "收起论文列表",
     filterSelected: "精选",
+    filterAll: "全部",
     filterJournals: "期刊",
+    filterConferences: "会议",
     roleFirst: "第一作者",
     roleCorresponding: "通讯作者",
     coverArticle: "封面文章",
     accepted: "已接收",
+    publicationArchiveTitle: "全部论文",
+    publicationArchiveIntro: "完整收录期刊与会议论文，按年份倒序排列。",
+    publicationArchiveSearchLabel: "搜索论文题目、作者、期刊或年份",
+    publicationArchiveSearchPlaceholder: "搜索题目、作者、期刊或年份",
+    publicationArchiveFilterLabel: "完整论文筛选",
+    publicationArchiveResults: "显示 {visible} / {total} 篇论文",
+    publicationArchiveEmpty: "没有符合当前条件的论文。",
+    publicationArchiveShowAll: "查看全部 27 篇论文",
+    publicationArchiveShowLess: "收起论文列表",
     experienceTitle: "教育与工作经历",
     experiencePostdocTime: "2023.07 — 至今",
     experiencePostdocTitle: "北京大学 · 博士后",
@@ -98,6 +110,8 @@ const translations = {
     experiencePhdAdvisorName: "黄如",
     experiencePhdAdvisorSuffix: "（中国科学院院士）",
     experienceBachelorTitle: "江南大学 · 本科",
+    moreTitle: "更多学术信息",
+    moreIntro: "科研项目、学术认可与完整论文档案",
     projectsTitle: "科研项目",
     project1Meta: "2025 — 2027 · 主持",
     project1Title: "国家自然科学基金青年基金 C 类",
@@ -130,6 +144,7 @@ const translations = {
     navSystems: "Chips",
     navPublications: "Publications",
     navExperience: "Experience",
+    navMore: "More",
     navContact: "Contact",
     heroEyebrow: "EMERGING MEMORY · COMPUTE-IN-MEMORY · INTELLIGENT COMPUTING",
     heroNamePrimary: "Longhao Yan",
@@ -201,11 +216,22 @@ const translations = {
     publicationsShowAll: "View all 12 publications",
     publicationsShowLess: "Show fewer publications",
     filterSelected: "Selected",
+    filterAll: "All",
     filterJournals: "Journals",
+    filterConferences: "Conferences",
     roleFirst: "First Author",
     roleCorresponding: "Corresponding Author",
     coverArticle: "Cover Article",
     accepted: "Accepted",
+    publicationArchiveTitle: "All Publications",
+    publicationArchiveIntro: "A complete record of journal and conference papers, organized in reverse chronological order.",
+    publicationArchiveSearchLabel: "Search publications by title, author, venue, or year",
+    publicationArchiveSearchPlaceholder: "Search title, author, venue, or year",
+    publicationArchiveFilterLabel: "Filter all publications",
+    publicationArchiveResults: "Showing {visible} of {total} publications",
+    publicationArchiveEmpty: "No publications match the current filters.",
+    publicationArchiveShowAll: "View all 27 publications",
+    publicationArchiveShowLess: "Show fewer publications",
     experienceTitle: "Education & Experience",
     experiencePostdocTime: "2023.07 — Present",
     experiencePostdocTitle: "Peking University · Postdoctoral Researcher",
@@ -217,6 +243,8 @@ const translations = {
     experiencePhdAdvisorName: "Prof. Ru Huang",
     experiencePhdAdvisorSuffix: " (Academician, Chinese Academy of Sciences)",
     experienceBachelorTitle: "Jiangnan University · B.Eng.",
+    moreTitle: "More Academic Information",
+    moreIntro: "Research projects, academic recognition, and the complete publication archive",
     projectsTitle: "Research Projects",
     project1Meta: "2025 — 2027 · Principal Investigator",
     project1Title: "NSFC Young Scientists Fund, Category C",
@@ -277,6 +305,11 @@ const showcaseMoreLabel = document.querySelector("[data-showcase-more-label]");
 const navSectionLinks = [...(primaryNav?.querySelectorAll('a[href^="#"]') ?? [])]
   .map((link) => ({ link, section: document.querySelector(link.getAttribute("href")) }))
   .filter(({ section }) => section);
+const archiveSection = document.querySelector("#all-publications");
+const moreNavLink = primaryNav?.querySelector('a[href="#more"]');
+if (archiveSection && moreNavLink) {
+  navSectionLinks.push({ link: moreNavLink, section: archiveSection });
+}
 const showcasePreviewLimits = { chips: 6, applications: 4 };
 const showcaseExpanded = { chips: false, applications: false };
 let activeShowcaseFilter = "chips";
@@ -299,6 +332,8 @@ const setNavigationOpen = (open) => {
   header?.classList.toggle("is-nav-open", open);
   navToggle?.setAttribute("aria-expanded", String(open));
   navToggle?.setAttribute("aria-label", t(open ? "navClose" : "navOpen"));
+  currentSectionLabel?.setAttribute("aria-expanded", String(open));
+  currentSectionLabel?.setAttribute("aria-label", t(open ? "navClose" : "navOpen"));
 };
 
 const updateShowcaseSwitch = (filter) => {
@@ -341,14 +376,15 @@ const setShowcaseFilter = (filter) => {
 
 const updateActiveNavigation = () => {
   const position = window.scrollY + (header?.offsetHeight ?? 0) + Math.min(window.innerHeight * 0.28, 220);
+  const orderedSections = [...navSectionLinks].sort((a, b) => a.section.offsetTop - b.section.offsetTop);
   let activeLink = null;
 
-  navSectionLinks.forEach(({ link, section }) => {
+  orderedSections.forEach(({ link, section }) => {
     if (section.offsetTop <= position) activeLink = link;
   });
 
   if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
-    activeLink = navSectionLinks.at(-1)?.link ?? activeLink;
+    activeLink = orderedSections.at(-1)?.link ?? activeLink;
   }
 
   navSectionLinks.forEach(({ link }) => {
@@ -435,6 +471,10 @@ window.addEventListener("load", () => {
 
 navToggle?.addEventListener("click", () => {
   setNavigationOpen(navToggle.getAttribute("aria-expanded") !== "true");
+});
+
+currentSectionLabel?.addEventListener("click", () => {
+  setNavigationOpen(currentSectionLabel.getAttribute("aria-expanded") !== "true");
 });
 
 primaryNav?.querySelectorAll("a").forEach((link) => {
