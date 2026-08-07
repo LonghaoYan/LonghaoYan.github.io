@@ -16,10 +16,11 @@ const translations = {
     heroEyebrow: "新型存储 · 存算一体 · 智能计算",
     heroNamePrimary: "闫龙皞",
     heroNameSecondary: "Longhao Yan",
-    heroLead: "大算力、高能效忆阻存算一体 AI 芯片",
+    heroLead: "大算力、高能效存算一体 AI 芯片",
     heroSummary: "围绕器件工艺、阵列集成、芯片架构与算法应用开展交叉研究，探索从新型存储器件到智能系统的完整技术链路。",
-    heroPublications: "查看代表成果",
+    heroPublications: "代表成果展示",
     heroResearch: "芯片与应用展示",
+    heroScrollHint: "向下探索",
     portraitAlt: "闫龙皞的个人照片",
     portraitAffiliation: "北京大学 · 博士后",
     portraitRole: "新型存储与存算一体芯片",
@@ -43,12 +44,12 @@ const translations = {
     researchCard3Title: "人工智能算法设计",
     researchCard3Text: "面向大语言模型、具身智能、多模态融合与脑机接口的软硬件协同优化。",
     systemsTitle: "芯片与应用",
-    systemsIntro: "芯片原型与应用验证，呈现从架构设计到真实智能系统的完整路径。",
+    systemsIntro: "芯片原型与应用验证，贯通架构设计与真实智能系统。",
     systemsFilterLabel: "芯片与应用分类筛选",
     systemsFilterChips: "芯片原型",
     systemsFilterApplications: "应用系统",
     systemsFilterHint: "点击切换",
-    systemsOpenImage: "打开原图",
+    systemsOpenPaper: "打开对应论文官网",
     systemsSwitchHint: "继续探索",
     systemsSwitchToApplications: "切换至应用系统",
     systemsSwitchToChips: "切换至芯片原型",
@@ -149,10 +150,11 @@ const translations = {
     heroEyebrow: "EMERGING MEMORY · COMPUTE-IN-MEMORY · INTELLIGENT COMPUTING",
     heroNamePrimary: "Longhao Yan",
     heroNameSecondary: "闫龙皞",
-    heroLead: "High-Performance, Energy-Efficient Memristive Compute-in-Memory AI Chips",
+    heroLead: "High-Performance, Energy-Efficient Compute-in-Memory AI Chips",
     heroSummary: "I work across device technology, array integration, chip architecture, and algorithms to build a complete path from emerging memory devices to intelligent systems.",
     heroPublications: "Selected Publications",
     heroResearch: "Explore Chips & Applications",
+    heroScrollHint: "Scroll to explore",
     portraitAlt: "Portrait of Longhao Yan",
     portraitAffiliation: "Peking University",
     portraitRole: "Postdoctoral Researcher",
@@ -176,12 +178,12 @@ const translations = {
     researchCard3Title: "AI Algorithm Design",
     researchCard3Text: "Hardware-software co-optimization for large language models, embodied intelligence, multimodal fusion, and brain-computer interfaces.",
     systemsTitle: "Chips & Applications",
-    systemsIntro: "Chip prototypes and application demonstrations trace the complete path from architecture design to real-world intelligent systems.",
+    systemsIntro: "Chip prototypes and application demos connect architecture design with real-world intelligent systems.",
     systemsFilterLabel: "Filter chips and applications",
     systemsFilterChips: "Chip Prototypes",
     systemsFilterApplications: "Application Systems",
     systemsFilterHint: "Click to switch",
-    systemsOpenImage: "Open full-size image",
+    systemsOpenPaper: "Open the related publication",
     systemsSwitchHint: "Continue Exploring",
     systemsSwitchToApplications: "Switch to Application Systems",
     systemsSwitchToChips: "Switch to Chip Prototypes",
@@ -310,7 +312,7 @@ const moreNavLink = primaryNav?.querySelector('a[href="#more"]');
 if (archiveSection && moreNavLink) {
   navSectionLinks.push({ link: moreNavLink, section: archiveSection });
 }
-const showcasePreviewLimits = { chips: 6, applications: 4 };
+const showcasePreviewLimits = { chips: 6, applications: 6 };
 const showcaseExpanded = { chips: false, applications: false };
 let activeShowcaseFilter = "chips";
 
