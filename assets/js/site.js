@@ -10,9 +10,13 @@ const translations = {
     navResearch: "研究",
     navSystems: "芯片",
     navPublications: "成果",
+    navPublicationsShort: "成果",
     navExperience: "经历",
+    navExperienceShort: "经历",
     navMore: "更多",
     navContact: "联系",
+    mobileNavOverview: "栏目快速导航",
+    mobileNavGoTo: "前往{section}",
     heroEyebrow: "新型存储 · 存算一体 · 智能计算",
     heroNamePrimary: "闫龙皞",
     heroNameSecondary: "Longhao Yan",
@@ -144,9 +148,13 @@ const translations = {
     navResearch: "Research",
     navSystems: "Chips",
     navPublications: "Publications",
+    navPublicationsShort: "Papers",
     navExperience: "Experience",
+    navExperienceShort: "Career",
     navMore: "More",
     navContact: "Contact",
+    mobileNavOverview: "Section quick navigation",
+    mobileNavGoTo: "Go to {section}",
     heroEyebrow: "EMERGING MEMORY · COMPUTE-IN-MEMORY · INTELLIGENT COMPUTING",
     heroNamePrimary: "Longhao Yan",
     heroNameSecondary: "闫龙皞",
@@ -295,7 +303,9 @@ const header = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
 const primaryNav = document.querySelector("#primary-nav");
 const languageToggle = document.querySelector("[data-language-toggle]");
-const currentSectionLabel = document.querySelector("[data-current-section]");
+const mobileSectionWindow = document.querySelector("[data-mobile-section-window]");
+const mobileSectionTrack = document.querySelector("[data-mobile-section-track]");
+const mobileNavItems = [...document.querySelectorAll("[data-mobile-nav-item]")];
 const aboutToggle = document.querySelector(".about-toggle");
 const aboutMore = document.querySelector("#about-more");
 const showcaseFilterButtons = document.querySelectorAll("[data-showcase-filter]");
@@ -366,8 +376,9 @@ const setNavigationOpen = (open) => {
   header?.classList.toggle("is-nav-open", open);
   navToggle?.setAttribute("aria-expanded", String(open));
   navToggle?.setAttribute("aria-label", t(open ? "navClose" : "navOpen"));
-  currentSectionLabel?.setAttribute("aria-expanded", String(open));
-  currentSectionLabel?.setAttribute("aria-label", t(open ? "navClose" : "navOpen"));
+  const currentMobileItem = mobileNavItems.find((item) => item.classList.contains("is-current"));
+  currentMobileItem?.setAttribute("aria-expanded", String(open));
+  currentMobileItem?.setAttribute("aria-label", t(open ? "navClose" : "navOpen"));
 };
 
 const updateShowcaseSwitch = (filter) => {
@@ -408,6 +419,54 @@ const setShowcaseFilter = (filter) => {
   updateShowcaseMore(filter);
 };
 
+const updateMobileNavigation = (activeLink, position) => {
+  if (!mobileNavItems.length || !mobileSectionTrack) return;
+
+  const items = mobileNavItems.map((element) => ({
+    element,
+    href: element.getAttribute("href")
+  }));
+  const activeHref = activeLink?.getAttribute("href") || "#top";
+  const activeIndex = Math.max(0, items.findIndex(({ href }) => href === activeHref));
+  const navIsOpen = header?.classList.contains("is-nav-open") ?? false;
+  const currentSection = document.querySelector(activeHref);
+  const nextSection = items[activeIndex + 1] ? document.querySelector(items[activeIndex + 1].href) : null;
+  const currentOffset = currentSection?.offsetTop ?? 0;
+  const nextOffset = nextSection?.offsetTop ?? currentOffset;
+  const sectionProgress = nextOffset > currentOffset
+    ? Math.min(1, Math.max(0, (position - currentOffset) / (nextOffset - currentOffset)))
+    : 1;
+  const continuousIndex = Math.min(items.length - 1, activeIndex + sectionProgress);
+  const itemWidth = Number.parseFloat(window.getComputedStyle(items[0].element).width) || 62;
+  mobileSectionTrack.style.transform = `translate3d(${-((activeIndex + 0.5) * itemWidth)}px, 0, 0)`;
+
+  items.forEach(({ element, href }, index) => {
+    const distance = Math.abs(index - continuousIndex);
+    const opacity = Math.max(0.24, 1 - distance * 0.46);
+    const scale = Math.max(0.94, 1 - Math.min(distance, 1.5) * 0.035);
+    const isCurrent = href === activeHref;
+    const isNearby = distance < 1.7;
+
+    element.style.setProperty("--mobile-item-opacity", opacity.toFixed(3));
+    element.style.setProperty("--mobile-item-scale", scale.toFixed(3));
+    element.classList.toggle("is-current", isCurrent);
+    if (isNearby) element.removeAttribute("aria-hidden");
+    else element.setAttribute("aria-hidden", "true");
+    element.tabIndex = isNearby ? 0 : -1;
+    if (isCurrent) {
+      element.setAttribute("aria-current", "location");
+      element.setAttribute("aria-controls", "primary-nav");
+      element.setAttribute("aria-expanded", String(navIsOpen));
+      element.setAttribute("aria-label", t(navIsOpen ? "navClose" : "navOpen"));
+    } else {
+      element.removeAttribute("aria-current");
+      element.removeAttribute("aria-controls");
+      element.removeAttribute("aria-expanded");
+      element.setAttribute("aria-label", t("mobileNavGoTo").replace("{section}", element.textContent.trim()));
+    }
+  });
+};
+
 const updateActiveNavigation = () => {
   const position = window.scrollY + (header?.offsetHeight ?? 0) + Math.min(window.innerHeight * 0.28, 220);
   const orderedSections = [...navSectionLinks].sort((a, b) => a.section.offsetTop - b.section.offsetTop);
@@ -428,9 +487,7 @@ const updateActiveNavigation = () => {
     else link.removeAttribute("aria-current");
   });
 
-  if (currentSectionLabel) {
-    currentSectionLabel.textContent = activeLink?.textContent.trim() || t("navHome");
-  }
+  updateMobileNavigation(activeLink, position);
 };
 
 const applyLanguage = (language, { updateUrl = false } = {}) => {
@@ -507,8 +564,15 @@ navToggle?.addEventListener("click", () => {
   setNavigationOpen(navToggle.getAttribute("aria-expanded") !== "true");
 });
 
-currentSectionLabel?.addEventListener("click", () => {
-  setNavigationOpen(currentSectionLabel.getAttribute("aria-expanded") !== "true");
+mobileSectionWindow?.addEventListener("click", (event) => {
+  const item = event.target.closest("[data-mobile-nav-item]");
+  if (!item) return;
+  if (item.classList.contains("is-current")) {
+    event.preventDefault();
+    setNavigationOpen(!header?.classList.contains("is-nav-open"));
+  } else {
+    setNavigationOpen(false);
+  }
 });
 
 primaryNav?.querySelectorAll("a").forEach((link) => {
