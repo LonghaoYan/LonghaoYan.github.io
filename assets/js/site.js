@@ -110,7 +110,7 @@ const translations = {
     experiencePhdAdvisorPrefix: "博士导师：",
     experiencePhdAdvisorName: "黄如",
     experiencePhdAdvisorSuffix: "（中国科学院院士）",
-    experienceBachelorTitle: "江南大学 · 本科",
+    experienceBachelorTitle: "江南大学 · 学士",
     moreTitle: "更多学术信息",
     moreIntro: "科研项目、学术认可与完整论文档案",
     projectsTitle: "科研项目",
@@ -315,6 +315,38 @@ if (archiveSection && moreNavLink) {
 const showcasePreviewLimits = { chips: 6, applications: 6 };
 const showcaseExpanded = { chips: false, applications: false };
 let activeShowcaseFilter = "chips";
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+document.documentElement.classList.add("motion-ready");
+
+const initializeMotionDesign = () => {
+  const hero = document.querySelector(".hero");
+  window.requestAnimationFrame(() => window.requestAnimationFrame(() => hero?.classList.add("is-ready")));
+
+  const revealSelector = ".about-heading, #research .section-heading, .showcase-heading, #publications > .container > .section-heading, .archive-heading, #experience .section-heading, .more-heading, .contact-inner > div:first-child";
+  const revealTargets = [...document.querySelectorAll(revealSelector)];
+  revealTargets.forEach((element) => {
+    element.classList.add("ui-reveal");
+    if (element.matches(".about-heading, .section-heading, .archive-heading")) {
+      element.classList.add("ui-reveal-line");
+    }
+  });
+
+  if (reducedMotionQuery.matches || !("IntersectionObserver" in window)) {
+    revealTargets.forEach((element) => element.classList.add("is-revealed"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-revealed");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -7% 0px" });
+
+  revealTargets.forEach((element) => observer.observe(element));
+};
 
 const dismissFilterCoachmark = (name) => {
   const coachmark = document.querySelector(`[data-filter-coachmark="${name}"]`);
@@ -552,5 +584,6 @@ const requestNavigationUpdate = () => {
 window.addEventListener("scroll", requestNavigationUpdate, { passive: true });
 window.addEventListener("resize", requestNavigationUpdate);
 
+initializeMotionDesign();
 applyLanguage(currentLanguage);
 updateActiveNavigation();
