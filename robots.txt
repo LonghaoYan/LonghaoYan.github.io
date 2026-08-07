@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://longhaoyan.github.io/sitemap.xml
+Sitemap: https://yanlonghao.com/sitemap.xml
