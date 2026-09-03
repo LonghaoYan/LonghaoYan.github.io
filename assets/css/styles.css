@@ -267,6 +267,10 @@ h2 { margin: 0; color: var(--navy-900); font-size: clamp(2rem, 4vw, 3.5rem); lin
 
 .about-more[hidden] { display: none; }
 
+.about-progress { margin: 26px 0 0; overflow: hidden; background: var(--white); border: 1px solid #b8c9d8; border-radius: 16px; box-shadow: 0 12px 28px rgba(6, 21, 42, 0.08); }
+
+.about-progress img { display: block; width: 100%; height: auto; }
+
 .about-toggle { display: inline-flex; min-height: 44px; align-items: center; gap: 11px; margin-top: 24px; padding: 8px 16px; color: var(--navy-800); cursor: pointer; background: var(--white); border: 1px solid #c8d6e3; border-radius: 999px; font: inherit; font-size: 0.82rem; font-weight: 800; }
 
 .about-toggle:hover { color: var(--blue-600); border-color: #9fb8cd; }
@@ -835,6 +839,7 @@ footer { color: #9fb0c4; background: var(--navy-950); }
   .about-summary { gap: 20px; }
   .about-summary .about-intro { font-size: 1.02rem; }
   .about-summary p:not(.about-intro) { padding-left: 14px; }
+  .about-progress { margin-top: 20px; border-radius: 12px; }
   .publication-filters { display: grid; width: 100%; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3px; margin-top: -18px; padding: 4px; border-radius: 14px; }
   .publication-filters button { min-width: 0; justify-content: center; gap: 5px; padding: 7px 6px; font-size: 0.72rem; }
   .publication-filters button small { min-width: 20px; height: 20px; padding-inline: 3px; font-size: 0.62rem; }

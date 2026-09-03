@@ -34,6 +34,21 @@ const paperDetails = {
     captions: ["Fig. 1 · 存内神经架构搜索概念与相变存储器特性", "Fig. 3 · 存内乘累加、存内排序与搜索流程"],
     captionsEn: ["Fig. 1 · In-memory neural architecture search and PCM characteristics", "Fig. 3 · In-memory MAC, ranking, and search workflow"]
   },
+  "iedm-2026-llm": {
+    abstract: "Edge large-language-model inference is dominated by KV-cache access and update costs, while frequent writes and conductance drift limit the endurance and accuracy of PCM compute-in-memory. This work presents a 40-nm, 288-Mb PCM compute-in-memory processor with a drift-resilient tri-tier KV-cache architecture spanning SRAM, digital PCM, and analog PCM. Wear-aware asymmetric quantization and robust Top-K attention reduce attention error by 66.9% and extend lifetime by 4.67×. Low-stress multilevel programming reduces programming pulses by 54% and write energy by 68.5%. A four-board 1.125-Gb prototype running Qwen2.5-7B and LLaMA2-7B achieves 235–297× lower energy per token and 14–18× lower latency per token than an NVIDIA A100 GPU.",
+    captions: ["Fig. 1 · 面向边缘大模型推理的跨层 PCM 存算协同设计", "Fig. 21–22 · 288-Mb 处理器与 1.125-Gb 多卡原型系统"],
+    captionsEn: ["Fig. 1 · Cross-layer PCM-CIM co-design for edge LLM inference", "Fig. 21–22 · 288-Mb processor and 1.125-Gb multi-board prototype"]
+  },
+  "iedm-2026-biohybrid": {
+    abstract: "Closed-loop biohybrid robots require low-power artificial perception and decision-making together with reliable neural stimulation for biological actuation. This work integrates an 8-Mb, 16-core RRAM perception-to-policy compute-in-memory processor with a VO₂ neural-stimulation chip. The processor converts thermal-image sequences into dual-channel voltage-duration policies, and the VO₂ chip transduces them into charge-balanced biphasic stimulation pulses. In a cockroach-based thermal-navigation task, the heterogeneous memristive system increases closed-loop success from 18% to 94%, cuts navigation time from 108 s to 54 s, and reduces task energy by 82.1%. Bluetooth coordination further enables multi-agent biohybrid operation.",
+    captions: ["Fig. 1–2 · 异构忆阻闭环生物混合机器人体系", "Fig. 14–18 · RRAM 处理器、闭环控制架构与导航性能"],
+    captionsEn: ["Fig. 1–2 · Heterogeneous memristive closed-loop biohybrid-robot system", "Fig. 14–18 · RRAM processor, closed-loop control architecture, and navigation performance"]
+  },
+  "iedm-2026-privacy": {
+    abstract: "Phase-change memory supports dense nonvolatile storage and efficient compute-in-memory for privacy-sensitive edge intelligence, but conductance drift degrades both multilevel retention and inference accuracy. This work presents a 40-nm, 2-Mb carbon-doped Ge₂Sb₂Te₅ PCM chip with workload-matched readout techniques. Intermediate-field slope readout retains 93% of the initial multilevel-state margin after a projected 10⁷ s, compared with 43% for conventional low-field readout. Column-level self-reference reduces drift-induced feature-scaling error from 38.6% to 2.6%. An authenticated home-assistance demonstrator achieves a 0.781% raw-key bit-error rate and 100% fall-detection recall at 10⁷ s.",
+    captions: ["Fig. 1 · 面向隐私敏感端侧智能的抗漂移存储与计算方案", "Fig. 15–16 · 认证式居家辅助流程与抗漂移性能"],
+    captionsEn: ["Fig. 1 · Drift-robust storage and computing for privacy-sensitive edge intelligence", "Fig. 15–16 · Authenticated home-assistance workflow and drift-robust performance"]
+  },
   "advs-2025": {
     abstract: "Object detection demands both classification and localization and places heavy computing requirements on edge systems. This work fabricates a 128-Mb C-doped Ge₂Sb₂Te₅ phase-change memory chip in 40 nm with a memory yield of 99.99999% and uses it for in-memory vector-matrix multiplication and max computation. A mixed-precision weight-mapping strategy reduces the energy consumption of analog-to-digital converters by up to 22.3× while preserving network performance. The resulting memristive in-memory object-detection system achieves 4,180× higher energy efficiency and 228× greater computational throughput than GPU implementations.",
     captions: ["Fig. 1 · 存内目标检测系统与软硬件协同架构", "Fig. 2 · 128-Mb PCM 芯片与器件编程特性"],
