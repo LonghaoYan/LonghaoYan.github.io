@@ -381,17 +381,8 @@ const dismissFilterCoachmark = (name) => {
   window.setTimeout(() => { coachmark.hidden = true; }, 200);
 };
 
-const loadAboutProgressImage = () => {
-  const image = aboutMore?.querySelector("[data-about-progress-image]");
-  if (!image || image.hasAttribute("src")) return;
-  image.src = window.matchMedia("(max-width: 640px)").matches ? image.dataset.srcMobile : image.dataset.src;
-  image.removeAttribute("data-src");
-  image.removeAttribute("data-src-mobile");
-};
-
 const setAboutOpen = (open) => {
   if (!aboutToggle || !aboutMore) return;
-  if (open) loadAboutProgressImage();
   aboutMore.hidden = !open;
   aboutToggle.setAttribute("aria-expanded", String(open));
   aboutToggle.querySelector("span").textContent = t(open ? "aboutLess" : "aboutMore");
