@@ -31,7 +31,7 @@
   <link rel="alternate" hreflang="en" href="https://yanlonghao.com/?lang=en">
   <link rel="alternate" hreflang="x-default" href="https://yanlonghao.com/">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css?v=64">
+  <link rel="stylesheet" href="assets/css/styles.css?v=65">
   <title>Longhao Yan | 闫龙皞</title>
   <script type="application/ld+json">
     {
@@ -89,7 +89,16 @@
         <a href="#contact" data-i18n="navContact">联系</a>
       </nav>
       <div class="header-actions">
-        <button class="language-toggle" type="button" data-language-toggle aria-label="Switch to English">EN</button>
+        <div class="language-control" data-language-control>
+          <button class="language-toggle" type="button" data-language-toggle aria-label="Switch to English">EN</button>
+          <div class="language-suggestion" data-language-suggestion role="dialog" aria-label="English language option" hidden>
+            <button class="language-suggestion-action" type="button" data-language-suggestion-action>
+              <span>English version</span>
+              <strong>Switch to English <span aria-hidden="true">→</span></strong>
+            </button>
+            <button class="language-suggestion-close" type="button" data-language-suggestion-close aria-label="Dismiss English language suggestion">×</button>
+          </div>
+        </div>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="打开导航菜单" data-i18n-aria-label="navOpen">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -930,7 +939,7 @@
       <p data-i18n="footerTagline">Built for research, collaboration and open exchange.</p>
     </div>
   </footer>
-  <script src="assets/js/site.js?v=41" defer></script>
+  <script src="assets/js/site.js?v=42" defer></script>
   <script src="assets/js/publications.js?v=35" defer></script>
 </body>
 </html>

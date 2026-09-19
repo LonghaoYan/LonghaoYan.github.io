@@ -295,30 +295,21 @@ const translations = {
 
 const supportedLanguages = new Set(Object.keys(translations));
 const queryLanguage = new URLSearchParams(window.location.search).get("lang");
-let savedLanguage;
-
-try {
-  savedLanguage = window.localStorage.getItem("site-language");
-} catch (_) {
-  savedLanguage = null;
-}
-
-const browserLanguages = navigator.languages?.length ? navigator.languages : [navigator.language];
-const browserLanguage = browserLanguages.some((language) => language?.toLowerCase().startsWith("zh"))
-  ? "zh-CN"
-  : "en";
-
 let currentLanguage = supportedLanguages.has(queryLanguage)
   ? queryLanguage
-  : supportedLanguages.has(savedLanguage)
-    ? savedLanguage
-    : browserLanguage;
+  : "zh-CN";
+
+const primaryBrowserLanguage = (navigator.languages?.[0] || navigator.language || "").toLowerCase();
+const shouldSuggestEnglish = !queryLanguage && primaryBrowserLanguage.startsWith("en");
 
 const t = (key) => translations[currentLanguage][key] ?? key;
 const header = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
 const primaryNav = document.querySelector("#primary-nav");
 const languageToggle = document.querySelector("[data-language-toggle]");
+const languageSuggestion = document.querySelector("[data-language-suggestion]");
+const languageSuggestionAction = document.querySelector("[data-language-suggestion-action]");
+const languageSuggestionClose = document.querySelector("[data-language-suggestion-close]");
 const mobileSectionWindow = document.querySelector("[data-mobile-section-window]");
 const mobileSectionTrack = document.querySelector("[data-mobile-section-track]");
 const mobileNavItems = [...document.querySelectorAll("[data-mobile-nav-item]")];
@@ -531,16 +522,13 @@ const applyLanguage = (language, { updateUrl = false } = {}) => {
     languageToggle.setAttribute("aria-label", t("languageSwitchLabel"));
     languageToggle.setAttribute("title", t("languageSwitchLabel"));
   }
+  if (currentLanguage === "en" && languageSuggestion) {
+    languageSuggestion.hidden = true;
+  }
   setAboutOpen(aboutToggle?.getAttribute("aria-expanded") === "true");
   setNavigationOpen(false);
   setShowcaseFilter(activeShowcaseFilter);
   updateActiveNavigation();
-
-  try {
-    window.localStorage.setItem("site-language", currentLanguage);
-  } catch (_) {
-    // Language still works when storage is unavailable.
-  }
 
   if (updateUrl) {
     const url = new URL(window.location.href);
@@ -597,6 +585,19 @@ primaryNav?.querySelectorAll("a").forEach((link) => {
 
 languageToggle?.addEventListener("click", () => {
   applyLanguage(currentLanguage === "en" ? "zh-CN" : "en", { updateUrl: true });
+});
+
+languageSuggestionAction?.addEventListener("click", () => {
+  applyLanguage("en", { updateUrl: true });
+});
+
+languageSuggestionClose?.addEventListener("click", () => {
+  languageSuggestion.hidden = true;
+  try {
+    window.sessionStorage.setItem("english-language-suggestion-dismissed", "true");
+  } catch (_) {
+    // Dismissal still works for the current page when storage is unavailable.
+  }
 });
 
 aboutToggle?.addEventListener("click", () => {
@@ -667,3 +668,13 @@ window.addEventListener("resize", requestNavigationUpdate);
 initializeMotionDesign();
 applyLanguage(currentLanguage);
 updateActiveNavigation();
+
+if (shouldSuggestEnglish && languageSuggestion) {
+  let suggestionDismissed = false;
+  try {
+    suggestionDismissed = window.sessionStorage.getItem("english-language-suggestion-dismissed") === "true";
+  } catch (_) {
+    // Show the suggestion when session storage is unavailable.
+  }
+  languageSuggestion.hidden = suggestionDismissed;
+}
