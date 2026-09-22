@@ -231,7 +231,7 @@ if (publicationArchive && contactSection) {
   contactSection.before(publicationArchive);
 
   const hashTarget = window.location.hash.slice(1);
-  if (["experience", "more", "all-publications", "contact"].includes(hashTarget)) {
+  if (["systems", "more", "all-publications", "contact"].includes(hashTarget)) {
     const realignHashTarget = () => window.requestAnimationFrame(() => {
       const target = document.getElementById(hashTarget);
       if (!target) return;

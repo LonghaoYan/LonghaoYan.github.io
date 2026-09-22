@@ -318,7 +318,7 @@ h2 { margin: 0; color: var(--navy-900); font-size: clamp(2rem, 4vw, 3.5rem); lin
 
 .about-more[hidden] { display: none; }
 
-.about-progress { margin: 26px 0 0; overflow: hidden; background: var(--white) url("../images/about/research-progress-preview.webp?v=2") center / cover no-repeat; border: 1px solid #b8c9d8; border-radius: 16px; box-shadow: 0 12px 28px rgba(6, 21, 42, 0.08); }
+.about-progress { margin: 26px 0 0; overflow: hidden; background: var(--white) url("../images/about/research-progress-preview.webp?v=3") center / cover no-repeat; border: 1px solid #b8c9d8; border-radius: 16px; box-shadow: 0 12px 28px rgba(6, 21, 42, 0.08); }
 
 .about-progress img { display: block; width: 100%; height: auto; }
 
