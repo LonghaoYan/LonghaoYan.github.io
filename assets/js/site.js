@@ -1,11 +1,7 @@
 const translations = {
   "zh-CN": {
-    progressOpen: "放大查看研究进展 ↗",
-    progressTitle: "研究进展",
     aboutHighlightsLabel: "论文与成果",
     aboutProjectsLabel: "科研项目与合作",
-    progressZoom: "放大 / 适应窗口",
-    progressClose: "关闭 ×",
     archiveShortcut: "完整论文档案 ↗",
     skipLink: "跳至主要内容",
     brandHome: "返回首页",
@@ -168,12 +164,8 @@ const translations = {
     navContact: "Contact",
     mobileNavOverview: "Section quick navigation",
     mobileNavGoTo: "Go to {section}",
-    progressOpen: "Explore research progress ↗",
-    progressTitle: "Research progress",
     aboutHighlightsLabel: "Publications & contributions",
     aboutProjectsLabel: "Projects & collaborations",
-    progressZoom: "Zoom / fit",
-    progressClose: "Close ×",
     archiveShortcut: "Complete publication record ↗",
     heroEyebrow: "EMERGING MEMORY · COMPUTE-IN-MEMORY · INTELLIGENT COMPUTING",
     heroNamePrimary: "Longhao Yan",
@@ -674,30 +666,6 @@ const requestNavigationUpdate = () => {
 
 window.addEventListener("scroll", requestNavigationUpdate, { passive: true });
 window.addEventListener("resize", requestNavigationUpdate);
-
-const progressDialog = document.querySelector(".progress-dialog");
-const progressOpen = document.querySelector(".progress-open");
-const progressZoom = document.querySelector(".progress-zoom");
-progressOpen.addEventListener("click", () => {
-  const image = progressDialog.querySelector("img");
-  if (!image.hasAttribute("src")) image.src = image.dataset.src;
-  progressDialog.showModal();
-  document.documentElement.classList.add("progress-modal-open");
-});
-document.querySelector(".progress-close").addEventListener("click", () => progressDialog.close());
-progressDialog.addEventListener("click", (event) => {
-  if (event.target === progressDialog) progressDialog.close();
-});
-progressZoom.addEventListener("click", () => {
-  const zoomed = progressDialog.classList.toggle("is-zoomed");
-  progressZoom.setAttribute("aria-pressed", String(zoomed));
-});
-progressDialog.addEventListener("close", () => {
-  document.documentElement.classList.remove("progress-modal-open");
-  progressDialog.classList.remove("is-zoomed");
-  progressZoom.setAttribute("aria-pressed", "false");
-  progressOpen.focus({ preventScroll: true });
-});
 
 initializeMotionDesign();
 applyLanguage(currentLanguage);
