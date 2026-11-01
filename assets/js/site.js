@@ -1,5 +1,12 @@
 const translations = {
   "zh-CN": {
+    progressOpen: "放大查看研究进展 ↗",
+    progressTitle: "研究进展",
+    aboutHighlightsLabel: "论文与成果",
+    aboutProjectsLabel: "科研项目与合作",
+    progressZoom: "放大 / 适应窗口",
+    progressClose: "关闭 ×",
+    archiveShortcut: "完整论文档案 ↗",
     skipLink: "跳至主要内容",
     brandHome: "返回首页",
     navOpen: "打开导航菜单",
@@ -22,14 +29,12 @@ const translations = {
     heroNameSecondary: "Longhao Yan",
     heroLead: "大算力、高能效存算一体 AI 芯片",
     heroSummary: "围绕器件工艺、存算电路、芯片架构与算法应用开展交叉研究，探索从新型存储器件到智能系统的完整技术链路。",
-    heroPublications: "代表成果展示",
-    heroResearch: "芯片与应用展示",
     heroScrollHint: "向下探索",
     portraitAlt: "闫龙皞的个人照片",
     portraitAffiliation: "北京大学 · 博士后",
     portraitRole: "新型存储与存算一体芯片",
     aboutTitle: "从新型存储器到高能效智能计算",
-    aboutParagraph1: "本人长期围绕高能效存算一体芯片开展系统研究，具备从器件工艺、阵列集成、芯片架构到算法应用的交叉研究能力。",
+    aboutParagraph1: "面向高能效智能计算，开展存算一体芯片的器件—电路—架构—算法跨层协同研究，贯通核心技术创新、芯片工程实现与系统应用验证。",
     aboutHighlights: "研究成果包括国际顶尖期刊与会议论文 30 篇，其中以第一作者或通讯作者（含共同）身份发表 20 篇，包括 Science（IF=47.3）、IEDM（8 篇一作）、Advanced Functional Materials（IF=19.9，封面）、Advanced Science（IF=14.1）、ESSERC（4 篇）、EDTM（3 篇）等；合作成果包括 Nature Electronics（IF=40.9）、Nature Communications（IF=15.7）、Advanced Materials（IF=26.8）等。",
     aboutProjects: "主持国家自然科学基金青年基金 C 类、国家自然科学基金联合基金重点项目（课题）和中国博士后科学基金面上项目等科研任务，参与国家重点研发计划、基金委重大研究计划集成项目、新基石研究员项目，以及多项与华为、国家电网、中芯国际和阿里巴巴达摩院等合作应用项目。",
     aboutParagraph2: "相关研究成果持续获得学术界和工业界认可。本人在微电子领域旗舰会议 IEDM 上以第一作者（含共同）发表或已接收 8 篇论文，获选 Top Ranked Student Paper（IEDM 2021、2026）、Technical Highlight（IEDM 2025）和 Best Paper Award Finalist（ICTA 2025）。《科学》杂志高度评价神经动力学工作“代表了一种物理驱动计算的理念转变”（Science 2026）。相关合作工作入选智源人工智能研究院发布的“2020 年人工智能十大进展”（IEDM 2020），被《Nature Reviews Electrical Engineering》权威综述列为存内计算硬件感知神经架构搜索的代表性框架（Sci. China Inf. Sci. 2021），被 IBM Research & IEEE Fellow 的 Abu Sebastian 教授列为存内动力学计算的典型技术案例（Adv. Mater. 2022）。与华为合作研究成果获得华为计算产品线最佳技术合作奖（MICRO 2024）。",
@@ -138,8 +143,8 @@ const translations = {
     recognitionTitle: "学术认可",
     contactTitle: "欢迎围绕新型存储与存算一体研究交流合作",
     footerTagline: "面向研究、合作与开放交流而构建。",
-    paperOpen: "查看摘要与精选图示",
-    paperClose: "收起论文详情",
+    paperOpen: "摘要与图示",
+    paperClose: "收起详情",
     abstractLabel: "摘要",
     figureOpen: "打开精选图",
     metaDescription: "闫龙皞（Longhao Yan），北京大学博士后，研究新型存储器、存算一体芯片与智能应用。",
@@ -163,19 +168,24 @@ const translations = {
     navContact: "Contact",
     mobileNavOverview: "Section quick navigation",
     mobileNavGoTo: "Go to {section}",
+    progressOpen: "Explore research progress ↗",
+    progressTitle: "Research progress",
+    aboutHighlightsLabel: "Publications & contributions",
+    aboutProjectsLabel: "Projects & collaborations",
+    progressZoom: "Zoom / fit",
+    progressClose: "Close ×",
+    archiveShortcut: "Complete publication record ↗",
     heroEyebrow: "EMERGING MEMORY · COMPUTE-IN-MEMORY · INTELLIGENT COMPUTING",
     heroNamePrimary: "Longhao Yan",
     heroNameSecondary: "闫龙皞",
     heroLead: "High-Performance, Energy-Efficient Compute-in-Memory AI Chips",
     heroSummary: "I work across device technology, compute-in-memory circuits, chip architecture, and algorithms to build a complete path from emerging memory devices to intelligent systems.",
-    heroPublications: "Selected Publications",
-    heroResearch: "Explore Chips & Applications",
     heroScrollHint: "Scroll to explore",
     portraitAlt: "Portrait of Longhao Yan",
     portraitAffiliation: "Peking University",
     portraitRole: "Postdoctoral Researcher",
     aboutTitle: "From Emerging Memory to Energy-Efficient Intelligent Computing",
-    aboutParagraph1: "I conduct systematic research on energy-efficient compute-in-memory chips, with cross-disciplinary expertise spanning device technology, array integration, chip architecture, and algorithms.",
+    aboutParagraph1: "My research advances energy-efficient intelligent computing through cross-layer co-design of devices, circuits, architectures, and algorithms for compute-in-memory chips, spanning core technology innovation, chip implementation, and system-level validation.",
     aboutHighlights: "My research includes 30 papers in leading journals and conferences, with 20 as first, co-first, or corresponding author, including Science (IF 47.3), eight first- or co-first-author IEDM papers, Advanced Functional Materials (IF 19.9, cover article), Advanced Science (IF 14.1), four ESSERC papers, and three EDTM papers. Collaborative work has appeared in Nature Electronics (IF 40.9), Nature Communications (IF 15.7), and Advanced Materials (IF 26.8).",
     aboutProjects: "I lead projects supported by the National Natural Science Foundation of China and the China Postdoctoral Science Foundation, and have contributed to national research programs and industry collaborations with Huawei, State Grid, SMIC, and Alibaba DAMO Academy.",
     aboutParagraph2: "My research has received recognition from both academia and industry. I have authored eight published or accepted first- or co-first-author papers at IEDM, including Top Ranked Student Papers (IEDM 2021 and 2026) and a Technical Highlight (IEDM 2025), and was a Best Paper Award Finalist at ICTA 2025. Science described our neural-dynamics work as representing a paradigm shift toward physically driven computing (Science 2026). Related collaborative work was selected among the Beijing Academy of Artificial Intelligence's Top 10 AI Advances of 2020 (IEDM 2020), identified by Nature Reviews Electrical Engineering as a representative framework for hardware-aware neural architecture search in in-memory computing (Sci. China Inf. Sci. 2021), and highlighted by IBM Research and IEEE Fellow Prof. Abu Sebastian as a representative case of in-memory dynamical computing (Adv. Mater. 2022). Our collaboration with Huawei received the Best Technical Collaboration Award from Huawei's Computing Product Line (MICRO 2024).",
@@ -284,8 +294,8 @@ const translations = {
     recognitionTitle: "Recognition",
     contactTitle: "Open to Research Collaboration on Emerging Memory and Compute-in-Memory",
     footerTagline: "Built for research, collaboration, and open exchange.",
-    paperOpen: "View Abstract & Featured Figures",
-    paperClose: "Close Paper Details",
+    paperOpen: "Abstract & figures",
+    paperClose: "Close details",
     abstractLabel: "ABSTRACT",
     figureOpen: "Open featured figure",
     metaDescription: "Longhao Yan is a postdoctoral researcher at Peking University working on emerging memory, compute-in-memory chips, and intelligent applications.",
@@ -664,6 +674,30 @@ const requestNavigationUpdate = () => {
 
 window.addEventListener("scroll", requestNavigationUpdate, { passive: true });
 window.addEventListener("resize", requestNavigationUpdate);
+
+const progressDialog = document.querySelector(".progress-dialog");
+const progressOpen = document.querySelector(".progress-open");
+const progressZoom = document.querySelector(".progress-zoom");
+progressOpen.addEventListener("click", () => {
+  const image = progressDialog.querySelector("img");
+  if (!image.hasAttribute("src")) image.src = image.dataset.src;
+  progressDialog.showModal();
+  document.documentElement.classList.add("progress-modal-open");
+});
+document.querySelector(".progress-close").addEventListener("click", () => progressDialog.close());
+progressDialog.addEventListener("click", (event) => {
+  if (event.target === progressDialog) progressDialog.close();
+});
+progressZoom.addEventListener("click", () => {
+  const zoomed = progressDialog.classList.toggle("is-zoomed");
+  progressZoom.setAttribute("aria-pressed", String(zoomed));
+});
+progressDialog.addEventListener("close", () => {
+  document.documentElement.classList.remove("progress-modal-open");
+  progressDialog.classList.remove("is-zoomed");
+  progressZoom.setAttribute("aria-pressed", "false");
+  progressOpen.focus({ preventScroll: true });
+});
 
 initializeMotionDesign();
 applyLanguage(currentLanguage);
