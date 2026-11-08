@@ -51,14 +51,11 @@ const translations = {
     researchCard3Text: "面向大语言模型、具身智能、多模态融合与脑机接口的软硬件协同优化。",
     systemsTitle: "芯片与应用",
     systemsIntro: "芯片原型与应用验证，贯通架构设计与真实智能系统。",
-    systemsFilterLabel: "芯片与应用分类筛选",
-    systemsFilterChips: "芯片原型",
+    systemsChipsIntro: "从存储器件到存算架构，呈现芯片原型与硬件实现。",
+    systemsApplicationsIntro: "面向真实智能任务，展示从芯片到系统的应用验证。",
+    systemsFilterChips: "芯片展示",
     systemsFilterApplications: "应用系统",
-    systemsFilterHint: "点击切换",
     systemsOpenPaper: "打开对应论文官网",
-    systemsSwitchHint: "继续探索",
-    systemsSwitchToApplications: "切换至应用系统",
-    systemsSwitchToChips: "切换至芯片原型",
     systemsShowAllChips: "查看全部 13 款芯片",
     systemsShowAllApplications: "查看全部 11 类应用",
     systemsShowLess: "收起展示",
@@ -198,14 +195,11 @@ const translations = {
     researchCard3Text: "Hardware-software co-optimization for large language models, embodied intelligence, multimodal fusion, and brain-computer interfaces.",
     systemsTitle: "Chips & Applications",
     systemsIntro: "Chip prototypes and application demos connect architecture design with real-world intelligent systems.",
-    systemsFilterLabel: "Filter chips and applications",
-    systemsFilterChips: "Chip Prototypes",
+    systemsChipsIntro: "Chip prototypes and hardware implementations, from memory devices to compute-in-memory architectures.",
+    systemsApplicationsIntro: "System-level demonstrations that bring chip capabilities to real-world intelligent tasks.",
+    systemsFilterChips: "Chip Gallery",
     systemsFilterApplications: "Application Systems",
-    systemsFilterHint: "Click to switch",
     systemsOpenPaper: "Open the related publication",
-    systemsSwitchHint: "Continue Exploring",
-    systemsSwitchToApplications: "Switch to Application Systems",
-    systemsSwitchToChips: "Switch to Chip Prototypes",
     systemsShowAllChips: "View all 13 chip prototypes",
     systemsShowAllApplications: "View all 11 application systems",
     systemsShowLess: "Show fewer",
@@ -317,12 +311,8 @@ const mobileSectionTrack = document.querySelector("[data-mobile-section-track]")
 const mobileNavItems = [...document.querySelectorAll("[data-mobile-nav-item]")];
 const aboutToggle = document.querySelector(".about-toggle");
 const aboutMore = document.querySelector("#about-more");
-const showcaseFilterButtons = document.querySelectorAll("[data-showcase-filter]");
 const showcaseItems = document.querySelectorAll("[data-showcase-item]");
-const showcaseSwitchButton = document.querySelector("[data-showcase-switch]");
-const showcaseSwitchLabel = document.querySelector("[data-showcase-switch-label]");
-const showcaseMoreButton = document.querySelector("[data-showcase-more]");
-const showcaseMoreLabel = document.querySelector("[data-showcase-more-label]");
+const showcaseMoreButtons = document.querySelectorAll("[data-showcase-more]");
 const navSectionLinks = [...(primaryNav?.querySelectorAll('a[href^="#"]') ?? [])]
   .map((link) => ({ link, section: document.querySelector(link.getAttribute("href")) }))
   .filter(({ section }) => section);
@@ -333,7 +323,6 @@ if (archiveSection && moreNavLink) {
 }
 const showcasePreviewLimits = { chips: 6, applications: 6 };
 const showcaseExpanded = { chips: false, applications: false };
-let activeShowcaseFilter = "chips";
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 document.documentElement.classList.add("motion-ready");
@@ -390,42 +379,20 @@ const setNavigationOpen = (open) => {
   currentMobileItem?.setAttribute("aria-label", t(open ? "navClose" : "navOpen"));
 };
 
-const updateShowcaseSwitch = (filter) => {
-  if (!showcaseSwitchButton || !showcaseSwitchLabel) return;
-  const target = filter === "chips" ? "applications" : "chips";
-  const label = t(target === "applications" ? "systemsSwitchToApplications" : "systemsSwitchToChips");
-  showcaseSwitchButton.dataset.showcaseTarget = target;
-  showcaseSwitchButton.setAttribute("aria-label", label);
-  showcaseSwitchLabel.textContent = label;
-};
-
-const updateShowcaseMore = (filter) => {
-  if (!showcaseMoreButton || !showcaseMoreLabel) return;
-  const expanded = showcaseExpanded[filter];
-  const label = t(expanded
-    ? "systemsShowLess"
-    : filter === "chips" ? "systemsShowAllChips" : "systemsShowAllApplications");
-  showcaseMoreButton.setAttribute("aria-expanded", String(expanded));
-  showcaseMoreLabel.textContent = label;
-};
-
-const setShowcaseFilter = (filter) => {
-  activeShowcaseFilter = filter;
-  showcaseFilterButtons.forEach((button) => {
-    const active = button.dataset.showcaseFilter === filter;
-    button.classList.toggle("is-active", active);
-    button.setAttribute("aria-pressed", String(active));
-  });
-
-  let visibleIndex = 0;
+const updateShowcaseCollections = () => {
+  const indices = { chips: 0, applications: 0 };
   showcaseItems.forEach((item) => {
-    const matchesFilter = item.dataset.showcaseItem === filter;
-    const withinPreview = showcaseExpanded[filter] || visibleIndex < showcasePreviewLimits[filter];
-    item.hidden = !matchesFilter || !withinPreview;
-    if (matchesFilter) visibleIndex += 1;
+    const group = item.dataset.showcaseItem;
+    item.hidden = !showcaseExpanded[group] && indices[group] >= showcasePreviewLimits[group];
+    indices[group] += 1;
   });
-  updateShowcaseSwitch(filter);
-  updateShowcaseMore(filter);
+  showcaseMoreButtons.forEach((button) => {
+    const group = button.dataset.showcaseMore;
+    button.setAttribute("aria-expanded", String(showcaseExpanded[group]));
+    button.querySelector("[data-showcase-more-label]").textContent = t(showcaseExpanded[group]
+      ? "systemsShowLess"
+      : group === "chips" ? "systemsShowAllChips" : "systemsShowAllApplications");
+  });
 };
 
 const updateMobileNavigation = (activeLink, position) => {
@@ -529,7 +496,7 @@ const applyLanguage = (language, { updateUrl = false } = {}) => {
   }
   setAboutOpen(aboutToggle?.getAttribute("aria-expanded") === "true");
   setNavigationOpen(false);
-  setShowcaseFilter(activeShowcaseFilter);
+  updateShowcaseCollections();
   updateActiveNavigation();
 
   if (updateUrl) {
@@ -606,38 +573,14 @@ aboutToggle?.addEventListener("click", () => {
   setAboutOpen(aboutToggle.getAttribute("aria-expanded") !== "true");
 });
 
-showcaseFilterButtons.forEach((button) => {
+showcaseMoreButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    dismissFilterCoachmark("systems");
-    setShowcaseFilter(button.dataset.showcaseFilter);
-  });
-});
-
-showcaseMoreButton?.addEventListener("click", () => {
-  showcaseExpanded[activeShowcaseFilter] = !showcaseExpanded[activeShowcaseFilter];
-  setShowcaseFilter(activeShowcaseFilter);
-
-  if (!showcaseExpanded[activeShowcaseFilter]) {
-    document.querySelector("#systems")?.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-      block: "start"
-    });
-  }
-});
-
-showcaseSwitchButton?.addEventListener("click", () => {
-  const target = showcaseSwitchButton.dataset.showcaseTarget || "applications";
-  dismissFilterCoachmark("systems");
-  showcaseSwitchButton.classList.add("has-been-used");
-  setShowcaseFilter(target);
-
-  window.requestAnimationFrame(() => {
-    const root = document.documentElement;
-    const previousScrollBehavior = root.style.scrollBehavior;
-    root.style.scrollBehavior = "auto";
-    document.querySelector("#systems")?.scrollIntoView({ behavior: "auto", block: "start" });
-    document.querySelector(`[data-showcase-filter="${target}"]`)?.focus({ preventScroll: true });
-    root.style.scrollBehavior = previousScrollBehavior;
+    const group = button.dataset.showcaseMore;
+    showcaseExpanded[group] = !showcaseExpanded[group];
+    updateShowcaseCollections();
+    if (!showcaseExpanded[group]) {
+      button.closest(".showcase-collection").scrollIntoView({ behavior: "auto", block: "start" });
+    }
   });
 });
 
